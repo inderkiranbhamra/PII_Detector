@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PII Detection</title>
+</head>
+<body>
+    <h1>PII Detection</h1>
+    <form action="/detect_pii" method="post">
+        <label for="paragraph">Enter Paragraph:</label>
+        <textarea id="paragraph" name="paragraph" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Detect PII">
+    </form>
+    <br>
+    {% if result %}
+        <h2>PII Detected:</h2>
+        <ul>
+            {% for pii_info in result %}
+                <li>{{ pii_info.pii_type }}: {{ pii_info.pii_value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
